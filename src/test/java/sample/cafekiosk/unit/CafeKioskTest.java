@@ -47,8 +47,8 @@ class CafeKioskTest {
         Americano americano = new Americano();
 
         assertThatThrownBy(() -> cafeKiosk.add(americano, 0))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("음료는 1잔 이상 주문하실 수 있습니다.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("음료는 1잔 이상 주문하실 수 있습니다.");
     }
 
     @Test
@@ -122,8 +122,8 @@ class CafeKioskTest {
         cafeKiosk.add(americano);
 
         assertThatThrownBy(() -> cafeKiosk.createOrder(LocalDateTime.of(2023, 1, 17, 9, 59)))
-                .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("주문 시간이 아닙니다. 관리자에게 문의하세요.");
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("주문 시간이 아닙니다. 관리자에게 문의하세요.");
     }
 
 }
