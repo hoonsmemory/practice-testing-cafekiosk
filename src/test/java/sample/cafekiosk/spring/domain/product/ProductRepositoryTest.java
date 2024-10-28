@@ -3,8 +3,8 @@ package sample.cafekiosk.spring.domain.product;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 
 import java.util.List;
 
@@ -13,14 +13,8 @@ import static org.assertj.core.groups.Tuple.tuple;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.*;
 import static sample.cafekiosk.spring.domain.product.ProductType.HANDMADE;
 
-
-@ActiveProfiles("test") // test 프로파일 설정
-//@SpringBootTest
-
-//JPA 관련한 빈만 주입
-//리포지토리와 관련된 테스트를 수행할 때, 데이터베이스와 상호작용하는 코드에 집중하여 테스트할 수 있도록 설정
-@DataJpaTest
-class ProductRepositoryTest {
+@Transactional
+class ProductRepositoryTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
