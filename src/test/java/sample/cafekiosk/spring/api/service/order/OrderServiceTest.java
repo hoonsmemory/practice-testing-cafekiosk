@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
+import sample.cafekiosk.spring.IntegrationTestSupport;
 import sample.cafekiosk.spring.api.controller.order.request.OrderCreateRequest;
 import sample.cafekiosk.spring.api.service.order.request.OrderCreateServiceRequest;
 import sample.cafekiosk.spring.api.service.order.response.OrderResponse;
@@ -25,12 +26,7 @@ import static org.assertj.core.api.Assertions.*;
 import static sample.cafekiosk.spring.domain.product.ProductSellingStatus.SELLING;
 import static sample.cafekiosk.spring.domain.product.ProductType.*;
 
-@ActiveProfiles("test")
-// test 상에서 사용할 경우 자동으로 롤백된다. (비즈니스 로직 등 트랜잭션이 생성되어야 할 곳에 적용되어있지 않다면, 변경 감지 등 그런 작업이 누락될 수 있다.)
-// 일반적으로 JpaRepository를 사용할 경우 내부적으로 @Transactional이 적용되어 있다.
-//@Transactional
-@SpringBootTest
-class OrderServiceTest {
+class OrderServiceTest extends IntegrationTestSupport {
 
     @Autowired
     private ProductRepository productRepository;
